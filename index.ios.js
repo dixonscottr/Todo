@@ -60,19 +60,30 @@ class ListItem extends React.Component {
   constructor() {
     super();
     this.state = {
-      done: false
+      done: false,
+      styles: 'styles.notdone'
     }
   }
 
   handlePress() {
-    console.log('I was pressed')
+    this.setState({
+      done: !(this.state.done)
+    })
+    if(this.state.done) {
+      this.setState({
+        styles: 'styles.done'
+      })
+    } else {
+      this.setState({
+        styles: 'styles.notdone'
+      })      
+    }
   }
 
   render() {
+    let style = this.state.style
     return (
-      <Text
-        onPress={this.handlePress.bind(this)}
-      >
+      <Text style={style} onPress={this.handlePress.bind(this)}>
         {this.props.todo}
       </Text>
     );
