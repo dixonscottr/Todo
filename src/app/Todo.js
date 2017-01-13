@@ -31,6 +31,9 @@ export class Todo extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <View style={styles.title}>
+          <Text style={styles.welcome}>To do list</Text>
+        </View>
         <TextInput
           style={styles.textInput}
           value={this.state.newToDo}
@@ -55,12 +58,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'cornsilk'
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    color: 'maroon',
+    fontFamily: 'Avenir-Heavy'
   },
   instructions: {
     textAlign: 'center',
@@ -70,18 +75,24 @@ const styles = StyleSheet.create({
   textInput: {
     height: 40,
     borderColor: 'gray',
-    borderWidth: 1
+    borderWidth: 1,
+    backgroundColor: 'white',
+    margin: 5,
+    borderRadius: 8
   },
   button: {
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 5,
     margin: 2,
-    padding: 2
+    padding: 3,
+    backgroundColor: 'lightblue'
   },
   content: {
     flexDirection:'row',
     alignItems: 'flex-start',
     flexWrap: 'wrap'
+  },
+  buttonText: {
   }
 });
