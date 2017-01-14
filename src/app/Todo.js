@@ -30,35 +30,51 @@ export class Todo extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.main}>
         <View style={styles.title}>
           <Text style={styles.welcome}>To do list</Text>
         </View>
-        <TextInput
-          style={styles.textInput}
-          value={this.state.newToDo}
-          onChangeText={(newToDo) => this.setState({ newToDo })}
-        />
-        <View style={styles.content}>
-          <TouchableHighlight style={styles.button} onPress={this.handlePress.bind(this)}>
-            <Text>Add Todo</Text>
-          </TouchableHighlight>
-          <TouchableHighlight style={styles.button} onPress={this.resetTodos.bind(this)}>
-            <Text>Reset List</Text>
-          </TouchableHighlight>
+        <View style={styles.container}>
+          <TextInput
+            style={styles.textInput}
+            value={this.state.newToDo}
+            onChangeText={(newToDo) => this.setState({ newToDo })}
+          />
+          <View style={styles.content}>
+            <TouchableHighlight style={styles.button} onPress={this.handlePress.bind(this)}>
+              <Text>Add Todo</Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.button} onPress={this.resetTodos.bind(this)}>
+              <Text>Reset List</Text>
+            </TouchableHighlight>
+          </View>
         </View>
-        {this.state.todos.map((todo, i) => <ListItem key={i} todo={todo} />)}
+        <View style={styles.todoContainer}>
+          {this.state.todos.map((todo, i) => <ListItem key={i} todo={todo} style={styles.todo} />)}
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  main: {
+    flex: 1,
+    backgroundColor: 'cornsilk',
+    paddingTop: 30
+  },
   container: {
     flex: 1,
-    justifyContent: 'center',
+    // justifyContent: 'center',
+    alignItems: 'center'
+  },
+  todoContainer: {
+    flex: 1,
     alignItems: 'center',
-    backgroundColor: 'cornsilk'
+    marginTop: 10
+  },
+  todo: {
+    marginBottom: 10
   },
   welcome: {
     fontSize: 20,
