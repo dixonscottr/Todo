@@ -6,7 +6,7 @@ import {
   TouchableHighlight,
   StyleSheet
 } from 'react-native';
-import { ListItem } from './ListItem'
+import { ListItem } from './ListItem';
 
 export class Todo extends Component {
   constructor() {
@@ -19,13 +19,18 @@ export class Todo extends Component {
 
   handlePress() {
     const todo = this.state.newToDo;
-    const newTodos = this.state.todos.concat(todo)
-    this.setState({ todos: newTodos })
-    this.setState({ newToDo: '' })
+    const newTodos = this.state.todos.concat(todo);
+    this.setState({ todos: newTodos });
+    this.setState({ newToDo: '' });
   }
 
   resetTodos() {
-    this.setState({ todos: [] })
+    this.setState({ todos: [] });
+  }
+
+  removeTodo(idx) {
+    const newTodos = [...this.state.todos.slice(0,idx), ...this.state.todos.slice(idx + 1)];
+    this.setState({ todos: newTodos})
   }
 
   render() {
@@ -44,13 +49,13 @@ export class Todo extends Component {
             <TouchableHighlight style={styles.button} onPress={this.handlePress.bind(this)}>
               <Text>Add Todo</Text>
             </TouchableHighlight>
-            <TouchableHighlight style={styles.button} onPress={this.resetTodos.bind(this)}>
+            <TouchableHighlight style={styles.button} onPress={this.resetTodos}>
               <Text>Reset List</Text>
             </TouchableHighlight>
           </View>
         </View>
         <View style={styles.todoContainer}>
-          {this.state.todos.map((todo, i) => <ListItem key={i} todo={todo} style={styles.todo} />)}
+          {this.state.todos.map((todo, i) => <ListItem idx={i} key={i} todo={todo} style={styles.todo} removeTodo={this.removeTodo.bind(this)} />)}
         </View>
       </View>
     );
