@@ -5,8 +5,7 @@ export class ListItem extends React.Component {
   constructor() {
     super();
     this.state = {
-      done: false,
-      styles: 'styles.notdone'
+      done: false
     }
   }
 
@@ -14,21 +13,15 @@ export class ListItem extends React.Component {
     this.setState({
       done: !(this.state.done)
     })
-    if(this.state.done) {
-      this.setState({
-        styles: 'styles.done'
-      })
-    } else {
-      this.setState({
-        styles: 'styles.notdone'
-      })      
-    }
+    console.log(this.state)
   }
 
   render() {
-    let style = this.state.style
     return (
-      <Text style={style} onPress={this.handlePress.bind(this)}>
+      <Text
+        style={this.state.done ? styles.done : styles.notdone}
+        onPress={this.handlePress.bind(this)}
+      >
         {this.props.todo}
       </Text>
     );
