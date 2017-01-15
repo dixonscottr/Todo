@@ -17,7 +17,7 @@ export class ListItem extends React.Component {
 
   render() {
     return (
-      <View style={styles.buttonHolder}>
+      <View style={styles.taskHolder}>
         <Text
           style={this.state.done ? styles.done : styles.notdone}
         >
@@ -27,13 +27,13 @@ export class ListItem extends React.Component {
           style={styles.button}
           onPress={this.toggleDone.bind(this)}
         >
-          <Text style={styles.buttonText}>✔️</Text>
+          <Text style={styles.buttonText}>✔︎</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={styles.button}
           onPress={() => this.props.removeTodo.call(this, this.props.idx)}
         >
-          <Text style={styles.buttonText}>🗑</Text>
+          <Text style={styles.buttonText}>✘</Text>
         </TouchableHighlight>
       </View>
     );
@@ -42,17 +42,22 @@ export class ListItem extends React.Component {
 
 const styles = StyleSheet.create({
   buttonText: {
-    fontSize: 10,
+    fontSize: 12,
     textAlign: 'center',
-    fontFamily: 'Avenir-Heavy'
+    fontFamily: 'Avenir-Heavy',
+    color: '#FB3640'
   },
   notdone: {
     textDecorationLine: 'none',
-    fontFamily: 'Avenir-Heavy'
+    fontFamily: 'Avenir-Heavy',
+    fontSize: 16,
+    color: "#FB3640"
   },
   done: {
     textDecorationLine: 'line-through',
-    fontFamily: 'Avenir-Heavy'
+    fontFamily: 'Avenir-Heavy',
+    fontSize: 16,
+    color: '#FB3640'
   },
   button: {
     borderWidth: 1,
@@ -60,11 +65,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     margin: 2,
     padding: 3,
-    backgroundColor: 'white'
+    backgroundColor: '#0A2463'
   },
-  buttonHolder: {
+  taskHolder: {
     flexDirection:'row',
-    alignItems: 'flex-start',
+    justifyContent: 'center',
+    alignItems: 'center',
     flexWrap: 'wrap'
   }
 });

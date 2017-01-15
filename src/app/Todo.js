@@ -47,10 +47,10 @@ export class Todo extends Component {
           />
           <View style={styles.content}>
             <TouchableHighlight style={styles.button} onPress={this.handlePress.bind(this)}>
-              <Text>Add Todo</Text>
+              <Text style={styles.buttonText}>Add Task</Text>
             </TouchableHighlight>
-            <TouchableHighlight style={styles.button} onPress={this.resetTodos}>
-              <Text>Reset List</Text>
+            <TouchableHighlight style={styles.button} onPress={this.resetTodos.bind(this)}>
+              <Text style={styles.buttonText}>Reset List</Text>
             </TouchableHighlight>
           </View>
         </View>
@@ -65,12 +65,11 @@ export class Todo extends Component {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    backgroundColor: 'cornsilk',
+    backgroundColor: '#247BA0',
     paddingTop: 30
   },
   container: {
     flex: 1,
-    // justifyContent: 'center',
     alignItems: 'center'
   },
   todoContainer: {
@@ -85,29 +84,28 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-    color: 'maroon',
-    fontFamily: 'Avenir-Heavy'
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+    color: '#FB3640',
+    fontFamily: 'Avenir-Heavy',
+    textShadowOffset: {
+      width: 2, height: 2},
+    textShadowRadius: 1,
+    textShadowColor: '#605F5E'
   },
   textInput: {
     height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    backgroundColor: 'white',
+    borderColor: '#FB3640',
+    borderWidth: 2,
+    backgroundColor: '#E2E2E2',
     margin: 5,
     borderRadius: 8
   },
   button: {
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: '#E2E2E2',
     borderRadius: 5,
     margin: 2,
     padding: 3,
-    backgroundColor: 'lightblue'
+    backgroundColor: '#0A2463'
   },
   content: {
     flexDirection:'row',
@@ -115,5 +113,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap'
   },
   buttonText: {
+    color: '#FB3640',
+    fontFamily: 'Avenir-Heavy'
   }
 });
