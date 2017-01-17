@@ -4,6 +4,7 @@ import {
   Text,
   TextInput,
   TouchableHighlight,
+  ScrollView,
   StyleSheet
 } from 'react-native';
 import { ListItem } from './ListItem';
@@ -53,9 +54,9 @@ export class Todo extends Component {
               <Text style={styles.buttonText}>Reset List</Text>
             </TouchableHighlight>
           </View>
-        </View>
-        <View style={styles.todoContainer}>
+        <View style={styles.listContent}>
           {this.state.todos.map((todo, i) => <ListItem idx={i} key={i} todo={todo} style={styles.todo} removeTodo={this.removeTodo.bind(this)} />)}
+        </View>
         </View>
       </View>
     );
@@ -65,37 +66,28 @@ export class Todo extends Component {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    backgroundColor: '#247BA0',
+    backgroundColor: '#E0DFD5',
     paddingTop: 30
   },
   container: {
     flex: 1,
     alignItems: 'center'
   },
-  todoContainer: {
-    flex: 1,
-    alignItems: 'center',
-    marginTop: 10
-  },
   todo: {
     marginBottom: 10
   },
   welcome: {
-    fontSize: 20,
+    fontSize: 30,
     textAlign: 'center',
     margin: 10,
-    color: '#FB3640',
-    fontFamily: 'Avenir-Heavy',
-    textShadowOffset: {
-      width: 2, height: 2},
-    textShadowRadius: 1,
-    textShadowColor: '#605F5E'
+    color: '#313638',
+    fontWeight: 'bold'
   },
   textInput: {
     height: 40,
-    borderColor: '#FB3640',
+    borderColor: '#E4B363',
     borderWidth: 2,
-    backgroundColor: '#E2E2E2',
+    backgroundColor: 'white',
     margin: 5,
     borderRadius: 8
   },
@@ -104,16 +96,22 @@ const styles = StyleSheet.create({
     borderColor: '#E2E2E2',
     borderRadius: 5,
     margin: 2,
-    padding: 3,
-    backgroundColor: '#0A2463'
+    padding: 15,
+    backgroundColor: '#E4B363'
   },
   content: {
     flexDirection:'row',
     alignItems: 'flex-start',
     flexWrap: 'wrap'
   },
+  listContent: {
+    // flex: 1,
+    // flexDirection:'column',
+    // alignItems: 'center'
+    marginTop: 20
+  },
   buttonText: {
-    color: '#FB3640',
+    color: '#313638',
     fontFamily: 'Avenir-Heavy'
   }
 });

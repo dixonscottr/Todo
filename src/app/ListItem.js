@@ -45,27 +45,25 @@ const styles = StyleSheet.create({
     fontSize: 12,
     textAlign: 'center',
     fontFamily: 'Avenir-Heavy',
-    color: '#FB3640'
+    color: '#313638'
   },
   notdone: {
     textDecorationLine: 'none',
     fontFamily: 'Avenir-Heavy',
-    fontSize: 16,
-    color: "#FB3640"
+    fontSize: 20,
+    color: "#313638"
   },
   done: {
     textDecorationLine: 'line-through',
     fontFamily: 'Avenir-Heavy',
-    fontSize: 16,
-    color: '#FB3640'
+    fontSize: 20,
+    color: 'red'
   },
   button: {
-    borderWidth: 1,
-    borderColor: 'black',
     borderRadius: 5,
-    margin: 2,
-    padding: 3,
-    backgroundColor: '#0A2463'
+    margin: 5,
+    padding: 15,
+    backgroundColor: '#E4B363'
   },
   taskHolder: {
     flexDirection:'row',
