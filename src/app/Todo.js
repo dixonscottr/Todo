@@ -57,7 +57,9 @@ export class Todo extends Component {
             </TouchableHighlight>
           </View>
         <View style={styles.listContent}>
+          <ScrollView>
           {this.state.todos.map((todo, i) => <ListItem idx={i} key={i} todo={todo} style={styles.todo} removeTodo={this.removeTodo.bind(this)} />)}
+          </ScrollView>
         </View>
         </View>
       </View>
