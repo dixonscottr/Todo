@@ -3,18 +3,39 @@ import { View,
         Text,
         Navigator,
         TouchableHighlight,
-        StyleSheet
+        StyleSheet,
+        Linking
 } from 'react-native';
 
 export class About extends Component {
 
+  handleClick = () => {
+    Linking.canOpenURL('https://github.com/dixonscottr/Todo').then(supported => {
+      if (supported) {
+        Linking.openURL('https://github.com/dixonscottr/Todo');
+      } else {
+        console.log('Don\'t know how to open URI: ' + this.props.url);
+      }
+    });
+  };
+
   render () {
     return (
       <View style={styles.main}>
-
         <TouchableHighlight onPress={this.props.onBack}>
           <Text style={styles.normalText}>Go back</Text>
         </TouchableHighlight>
+        <View style={styles.container}>
+          <Text style={styles.primary}>
+            To do: a React Native app
+          </Text>
+          <Text style={styles.secondary}>
+            Coded by Scott Dixon
+          </Text>
+          <TouchableHighlight style={styles.button} onPress={this.handleClick}>
+            <Text style={styles.normalText}>Source Code</Text>
+          </TouchableHighlight>
+        </View>
       </View>
     )
   }
@@ -41,8 +62,15 @@ const styles = StyleSheet.create({
   todo: {
     marginBottom: 10
   },
-  welcome: {
-    fontSize: 30,
+  primary: {
+    fontSize: 25,
+    textAlign: 'center',
+    margin: 10,
+    color: '#313638',
+    fontWeight: 'bold'
+  },
+  secondary: {
+    fontSize: 20,
     textAlign: 'center',
     margin: 10,
     color: '#313638',
