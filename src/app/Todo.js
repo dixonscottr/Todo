@@ -20,9 +20,11 @@ export class Todo extends Component {
 
   handlePress() {
     const todo = this.state.newToDo;
-    const newTodos = this.state.todos.concat(todo);
-    this.setState({ todos: newTodos });
-    this.setState({ newToDo: '' });
+    if(todo != '') {
+      const newTodos = this.state.todos.concat(todo);
+      this.setState({ todos: newTodos });
+      this.setState({ newToDo: '' });
+    }
   }
 
   resetTodos() {
