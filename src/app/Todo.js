@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   View,
   Text,
   TextInput,
   TouchableHighlight,
   ScrollView,
-  StyleSheet
+  StyleSheet,
+  AlertIOS
 } from 'react-native';
 import { ListItem } from './ListItem';
 
@@ -24,11 +25,18 @@ export class Todo extends Component {
       const newTodos = this.state.todos.concat(todo);
       this.setState({ todos: newTodos });
       this.setState({ newToDo: '' });
+    } else {
+      AlertIOS.alert(
+        'Your task cannot be blank!'
+      );
     }
   }
 
   resetTodos() {
     this.setState({ todos: [] });
+    AlertIOS.alert(
+      'The task list is now empty'
+    );
   }
 
   removeTodo(idx) {
@@ -39,6 +47,11 @@ export class Todo extends Component {
   render() {
     return (
       <View style={styles.main}>
+
+        <TouchableHighlight onPress={this.props.onForward}>
+          <Text style={styles.normalText}>About this app</Text>
+        </TouchableHighlight>
+
         <View style={styles.title}>
           <Text style={styles.welcome}>To do list</Text>
         </View>
@@ -66,6 +79,11 @@ export class Todo extends Component {
     );
   }
 }
+
+Todo.propTypes = {
+  title: PropTypes.string.isRequired,
+  onForward: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   main: {
@@ -117,5 +135,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#313638',
     fontFamily: 'Avenir-Heavy'
-  }
+  },
+  normalText: {
+    fontFamily: 'Avenir-Heavy'
+  },
 });

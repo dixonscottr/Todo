@@ -6,13 +6,14 @@
 
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet } from 'react-native';
-import { Todo } from './src/app/Todo'
+// import { Todo } from './src/app/Todo'
+import { MainPage } from './src/app/MainPage'
 
 // const Main = () => (<Todo />);
 class Main extends Component {
   render() {
     return(
-      <Todo />
+      <MainPage />
     );
   }
 }
