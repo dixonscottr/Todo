@@ -48,10 +48,6 @@ export class Todo extends Component {
     return (
       <View style={styles.main}>
 
-        <TouchableHighlight onPress={this.props.onForward}>
-          <Text style={styles.normalText}>About this app</Text>
-        </TouchableHighlight>
-
         <View style={styles.title}>
           <Text style={styles.welcome}>To do list</Text>
         </View>
@@ -69,12 +65,15 @@ export class Todo extends Component {
               <Text style={styles.buttonText}>Reset List</Text>
             </TouchableHighlight>
           </View>
-        <View style={styles.listContent}>
-          <ScrollView>
-          {this.state.todos.map((todo, i) => <ListItem idx={i} key={i} todo={todo} style={styles.todo} removeTodo={this.removeTodo.bind(this)} />)}
-          </ScrollView>
+          <View style={styles.listContent}>
+            <ScrollView>
+            {this.state.todos.map((todo, i) => <ListItem idx={i} key={i} todo={todo} style={styles.todo} removeTodo={this.removeTodo.bind(this)} />)}
+            </ScrollView>
+          </View>
         </View>
-        </View>
+        <TouchableHighlight style={styles.aboutContainer} onPress={this.props.onForward}>
+          <Text style={styles.aboutText}>About this app</Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -104,6 +103,16 @@ const styles = StyleSheet.create({
     margin: 10,
     color: '#313638',
     fontWeight: 'bold'
+  },
+  aboutContainer: {
+
+  },
+  aboutText: {
+    fontFamily: 'Avenir-Heavy',
+    textAlign: 'center'
+  },
+  aboutContainer: {
+    padding: 10
   },
   textInput: {
     height: 40,
@@ -135,8 +144,5 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#313638',
     fontFamily: 'Avenir-Heavy'
-  },
-  normalText: {
-    fontFamily: 'Avenir-Heavy'
-  },
+  }
 });
