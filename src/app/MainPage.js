@@ -46,20 +46,3 @@ export class MainPage extends Component {
     )
   }
 }
-
-// (route, navigator) => 
-//           <Todo
-//             title={route.title}
-//             onForward={() => {
-//               if(route.index > 0) {
-
-//               } else {
-//                 navigator.push(routes[1]);
-//               }
-//             }}
-//             onBack={() => {
-//               if (route.index > 0) {
-//                 navigator.pop();
-//               }
-//             }}
-//           />
