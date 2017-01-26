@@ -22,8 +22,8 @@ export class About extends Component {
   render () {
     return (
       <View style={styles.main}>
-        <TouchableHighlight onPress={this.props.onBack}>
-          <Text style={styles.normalText}>Go back</Text>
+        <TouchableHighlight style={styles.back} onPress={this.props.onBack}>
+          <Text style={styles.backText}>&#x2039;</Text>
         </TouchableHighlight>
         <View style={styles.container}>
           <Text style={styles.primary}>
@@ -52,8 +52,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#E0DFD5',
     paddingTop: 30
   },
-  normalText: {
-    fontFamily: 'Avenir-Heavy'
+  backText: {
+    fontSize: 40
+  },
+  back: {
+    paddingLeft: 10
   },
   container: {
     flex: 1,
