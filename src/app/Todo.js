@@ -92,7 +92,9 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
+    overflow: 'hidden'
+
   },
   todo: {
     marginBottom: 10
@@ -103,9 +105,6 @@ const styles = StyleSheet.create({
     margin: 10,
     color: '#313638',
     fontWeight: 'bold'
-  },
-  aboutContainer: {
-
   },
   aboutText: {
     fontFamily: 'Avenir-Heavy',
