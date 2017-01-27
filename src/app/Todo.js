@@ -47,7 +47,6 @@ export class Todo extends Component {
   render() {
     return (
       <View style={styles.main}>
-
         <View style={styles.title}>
           <Text style={styles.welcome}>To do list</Text>
         </View>
@@ -135,9 +134,6 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap'
   },
   listContent: {
-    // flex: 1,
-    // flexDirection:'column',
-    // alignItems: 'center'
     marginTop: 20
   },
   buttonText: {

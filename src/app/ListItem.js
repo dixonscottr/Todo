@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
-import { Col, Row, Grid } from "react-native-easy-grid";
 
 export class ListItem extends React.Component {
   constructor() {
@@ -18,24 +17,28 @@ export class ListItem extends React.Component {
 
   render() {
     return (
-      <View style={styles.taskHolder}>
-        <Text
-          style={this.state.done ? styles.done : styles.notdone}
-        >
-          {this.props.todo}
-        </Text>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={this.toggleDone.bind(this)}
-        >
-          <Text style={styles.buttonText}>✔︎</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={() => this.props.removeTodo.call(this, this.props.idx)}
-        >
-          <Text style={styles.buttonText}>✘</Text>
-        </TouchableHighlight>
+      <View style={styles.tasksHolder}>
+        <View style={styles.taskHolder}>
+          <Text
+            style={this.state.done ? styles.done : styles.notdone}
+          >
+            {this.props.todo}
+          </Text>
+        </View>
+        <View style={styles.buttonHolder}>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={this.toggleDone.bind(this)}
+          >
+            <Text style={styles.buttonText}>✔︎</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={() => this.props.removeTodo.call(this, this.props.idx)}
+          >
+            <Text style={styles.buttonText}>✘</Text>
+          </TouchableHighlight>
+        </View>
       </View>
     );
   }
@@ -66,10 +69,21 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: '#E4B363'
   },
-  taskHolder: {
+  tasksHolder: {
     flexDirection:'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     flexWrap: 'wrap'
+  },
+  taskHolder: {
+    marginLeft: 0,
+    flexDirection:'row',
+    justifyContent: 'flex-start',
+  },
+  buttonHolder: {
+    flexDirection:'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginRight: 0
   }
 });
