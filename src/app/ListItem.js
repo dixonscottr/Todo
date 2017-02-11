@@ -1,36 +1,29 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 
-export class ListItem extends React.Component {
-
-  render() {
-    return (
-      <View style={styles.tasksHolder}>
-        <View style={styles.taskHolder}>
-          <Text
-            style={this.props.done ? styles.done : styles.notdone}
-          >
-            {this.props.text}
-          </Text>
-        </View>
-        <View style={styles.buttonHolder}>
-          <TouchableHighlight
-            style={styles.button}
-            onPress={this.props.toggleDone.bind(this)}
-          >
-            <Text style={styles.buttonText}>✔︎</Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.button}
-            onPress={this.props.removeTodo.bind(this)}
-          >
-            <Text style={styles.buttonText}>✘</Text>
-          </TouchableHighlight>
-        </View>
+export const ListItem = ({done, text, toggleDone, removeTodo}) => (
+    <View style={styles.tasksHolder}>
+      <View style={styles.taskHolder}>
+        <Text style={done ? styles.done : styles.notdone}>
+          {text}
+        </Text>
       </View>
-    );
-  }
-}
+      <View style={styles.buttonHolder}>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={toggleDone.bind(this)}
+        >
+          <Text style={styles.buttonText}>✔︎</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={removeTodo.bind(this)}
+        >
+          <Text style={styles.buttonText}>✘</Text>
+        </TouchableHighlight>
+      </View>
+    </View>
+)
 
 ListItem.propTypes = {
   text: PropTypes.string.isRequired,

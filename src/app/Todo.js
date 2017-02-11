@@ -8,6 +8,7 @@ import {
   StyleSheet,
   AlertIOS
 } from 'react-native';
+
 import { ListItem } from './ListItem';
 
 export class Todo extends Component {
@@ -91,7 +92,6 @@ export class Todo extends Component {
                 key={i}
                 done={todo.done}
                 text={todo.content}
-                style={styles.todo}
                 removeTodo={this.removeTodo.bind(this, todo.id)}
                 toggleDone={this.toggleDone.bind(this, todo.id)} />
               )
