@@ -1,40 +1,28 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 
 export class ListItem extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      done: false
-    }
-  }
-
-  toggleDone() {
-    this.setState({
-      done: !(this.state.done)
-    })
-  }
 
   render() {
     return (
       <View style={styles.tasksHolder}>
         <View style={styles.taskHolder}>
           <Text
-            style={this.state.done ? styles.done : styles.notdone}
+            style={this.props.done ? styles.done : styles.notdone}
           >
-            {this.props.todo}
+            {this.props.text}
           </Text>
         </View>
         <View style={styles.buttonHolder}>
           <TouchableHighlight
             style={styles.button}
-            onPress={this.toggleDone.bind(this)}
+            onPress={this.props.toggleDone.bind(this)}
           >
             <Text style={styles.buttonText}>✔︎</Text>
           </TouchableHighlight>
           <TouchableHighlight
             style={styles.button}
-            onPress={() => this.props.removeTodo.call(this, this.props.idx)}
+            onPress={this.props.removeTodo.bind(this)}
           >
             <Text style={styles.buttonText}>✘</Text>
           </TouchableHighlight>
@@ -43,6 +31,13 @@ export class ListItem extends React.Component {
     );
   }
 }
+
+ListItem.propTypes = {
+  text: PropTypes.string.isRequired,
+  done: PropTypes.bool.isRequired,
+  removeTodo: PropTypes.func.isRequired,
+  toggleDone: PropTypes.func.isRequired
+};
 
 const styles = StyleSheet.create({
   buttonText: {

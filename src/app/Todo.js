@@ -15,14 +15,25 @@ export class Todo extends Component {
     super();
     this.state = {
       todos: [],
-      newToDo: ''
-    }
+      newToDo: '',
+      id: 0
+    };
   }
 
   handlePress() {
-    const todo = this.state.newToDo;
-    if(todo != '') {
-      const newTodos = this.state.todos.concat(todo);
+    const text = this.state.newToDo;
+    if(text != '') {
+      const newId = this.state.id + 1
+
+      this.setState({
+        id: newId
+      })
+      const newTodo = {
+        content: text,
+        done: false,
+        id: this.state.id
+      }
+      const newTodos = this.state.todos.concat(newTodo);
       this.setState({ todos: newTodos });
       this.setState({ newToDo: '' });
     } else {
@@ -39,9 +50,16 @@ export class Todo extends Component {
     );
   }
 
-  removeTodo(idx) {
-    const newTodos = [...this.state.todos.slice(0,idx), ...this.state.todos.slice(idx + 1)];
+  removeTodo(id) {
+    const newTodos = this.state.todos.filter(todo => todo.id !== id);
     this.setState({ todos: newTodos})
+  }
+
+  toggleDone(id) {
+    const todoToToggle = this.state.todos.find(todo => todo.id === id);
+    todoToToggle.done = !todoToToggle.done;
+    const newTodos = this.state.todos.map(todo => todo.id === todoToToggle.id ? todoToToggle : todo);
+    this.setState({todos: newTodos});
   }
 
   render() {
@@ -66,7 +84,19 @@ export class Todo extends Component {
           </View>
           <View style={styles.listContent}>
             <ScrollView>
-            {this.state.todos.map((todo, i) => <ListItem idx={i} key={i} todo={todo} style={styles.todo} removeTodo={this.removeTodo.bind(this)} />)}
+            {this.state.todos.map((todo, i) => {
+              return (
+              <ListItem
+                id={todo.id}
+                key={i}
+                done={todo.done}
+                text={todo.content}
+                style={styles.todo}
+                removeTodo={this.removeTodo.bind(this, todo.id)}
+                toggleDone={this.toggleDone.bind(this, todo.id)} />
+              )
+              })
+            }
             </ScrollView>
           </View>
         </View>
